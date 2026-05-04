@@ -1,5 +1,5 @@
 import AddProductForm from "./components/AddProductForm";
-import FilterPanel from "./components/FilterPanel";
+import FilterForm from "./components/FilterForm";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
 import ProductList from "./components/ProductList";
@@ -88,7 +88,7 @@ function App() {
             <AddProductForm onAddProduct={handleAddProduct} categoryOptions={categoryOptions}/>
           </SectionLayout>
           <SectionLayout id="filter-product" title="Фильтр товаров">
-            <FilterPanel activeFilter={filter} onFilterChange={setFilter} filteredOptions={categoryOptions}/>
+            <FilterForm activeFilter={filter} onFilterChange={setFilter} filteredOptions={categoryOptions}/>
           </SectionLayout>
           <SectionLayout id="products" title="Каталог товаров">
             <ProductList products={filteredProducts} onDelete={handleDelete} onAddToCart={handleInCart} cart={cart}/>

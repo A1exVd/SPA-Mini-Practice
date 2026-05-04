@@ -1,6 +1,6 @@
 import ControlledRadioInput from "./ControlledRadioInput";
 
-export default function FilterPanel({ activeFilter, onFilterChange, filteredOptions}) {
+export default function FilterForm({ activeFilter, onFilterChange, filteredOptions}) {
     return (
             <form className="filter-form">
                 {Object.entries(filteredOptions).map(([value, label]) => (
