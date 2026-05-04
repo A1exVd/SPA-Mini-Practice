@@ -51,7 +51,7 @@ function App() {
  const [ filter, setFilter ] = useState("all");
  
   const handleDelete = (id) => {
-    setProducts(products.filter(product => product.id !== id));
+    setProducts(prev => prev.filter(product => product.id !== id));
     setCart(prev => prev.filter(productId => productId !== id));
   }
 
@@ -64,7 +64,7 @@ function App() {
   }
 
   const handleAddProduct = (newProduct) => {
-      setProducts(prev => [...prev, {id: Date.now(), categoryRus: categoryOptions[newProduct.category], ...newProduct}])
+      setProducts(prev => [...prev, {id: String(Date.now()), categoryRus: categoryOptions[newProduct.category], ...newProduct}])
   }  
 
   const filteredProducts = filter === "all" 
@@ -79,7 +79,7 @@ function App() {
           <SectionLayout id="progress" title="Интернет-магазин">
             <ProgressBar 
               id="progress"
-              label={`Прогресс: ${cart.length}/${products.length} добавлено`}
+              label={`Прогресс: ${cart.length}/${products.length} добавлено в корзину`}
               value={cart.length}
               max={products.length}
               />
