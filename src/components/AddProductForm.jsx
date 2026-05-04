@@ -13,11 +13,19 @@ export default function AddProductForm({ onAddProduct, categoryOptions }) {
 
 
     const handleSubmit = (e) => {
+        // ПОЧЕМУ используем e.preventDefault()? Для отмены стандартного поведения браузера
+        // при возникновении события. В данном случае чтобы отправить форму без перезагрузки страницы
         e.preventDefault();
         const result = ProductSchema.safeParse(productFormData);
         if(result.success) {
             onAddProduct(productFormData)
             setError(null)
+            setProductFormData({
+                name: "",
+                description: "",
+                category: "Mice",
+                price: ""
+            })
             return;
         }
 
