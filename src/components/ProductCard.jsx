@@ -2,10 +2,7 @@ import Button from "./Button.jsx";
 import { useState } from "react";
 
 export default function ProductCard({product, onDelete, onAddToCart, inCart}) {
-    const [isInCart, setIsInCart] = useState(inCart);
-
     const handleInChart = () => {
-        setIsInCart(!isInCart);
         onAddToCart(product.id)
     }
 
@@ -19,9 +16,9 @@ export default function ProductCard({product, onDelete, onAddToCart, inCart}) {
             <span>Цена: {product.price.toFixed(2)}$</span>
             <Button
                 onClick={handleInChart}
-                className={isInCart? "primary-btn" : ""}
+                className={inCart ? "primary-btn" : ""}
             >
-                {isInCart ? "В корзине" : "Добавить"}
+                {inCart ? "В корзине" : "Добавить"}
             </Button>
             <Button
                 onClick={() => onDelete(product.id)}
