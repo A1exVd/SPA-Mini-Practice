@@ -93,8 +93,8 @@ function App() {
           <SectionLayout id="products" title="Каталог товаров">
             <ProductList products={filteredProducts} onDelete={handleDelete} onAddToCart={handleInCart} cart={cart}/>
           </SectionLayout>
-          </main>
-          <Footer />
+        </main>
+        <Footer />
       </Layout>
     </ThemeProvider>
   );
