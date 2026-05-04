@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+<h1>
+    <img src="./public/logo192.png"  alt="React Logo" width="35"  height="35" style="vertical-align: middle"/>
+    SPA Mini Practice
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![NPM Version](https://img.shields.io/npm/v/react?logo=react&label=react)
+![NPM Version](https://img.shields.io/npm/v/zod?logo=zod&label=zod)
+![NPM Version](https://img.shields.io/npm/v/lucide-react?logo=lucide&label=lucide-react)
 
-## Available Scripts
+![SPA Mini](public/SPA-Mini.png)
 
-In the project directory, you can run:
+## Установка 🔧
 
-### `npm start`
+1. Клонировать репозиторий
+2. Перейте в папку репозитория
+3. Скачать зависимости (npm install)
+4. Скрипт для запуска (npm start)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Основные вопросы 🎓
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+**Что такое «однонаправленный поток данных» в React? Почему это удобно?**    
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Архитектурный шаблон, при котором данные перемещаются от родительского компонента к дочернему через props. 
+Главными плюсы:
+* предсказуемость компонентов - легко отследить источник данных и причину изменения
+* упрощенная отладка
+* высокая производительность,
+* независимость компонентов ( 
+Компоненты можно переиспользовать, получают данные извне через props),
+* строгий порядок.
 
-### `npm run build`
+**Что такое lifting state up? Приведите пример из Вашей практической работы.**   
+Поднятие состояние из дочернего к родительскому компоненту. Например, поднимаем состояние из filterPanel в App.js, чтобы использовать active filter в app js и передавать результат фильтра в другие компоненты в app.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Как дочерний компонент сообщает родителю о событии? Почему нельзя изменить state родителя напрямую?**  
+Дочерний компонент получает от родителя callback функцию, которую он использует для изменения состояния родителя. Изменять state напрямую нельзя, так как react не узнает об изменениях и не перерисует интерфейс. Только через сеттер.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Что такое управляемый компонент (controlled component)? Зачем нужен атрибут value у input?**  
+Элемент формы, значение которого хранится в state, а не в дом и управляется через обработчик событий. Необходим для обеспечения единого источника данных, мгновенной валидации, динамического управления. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Что такое паттерн «компонент-обёртка» (wrapper component)? Как работает children?**  
+Это компонент, который содержит в себе другие компоненты или элементы и определяет общую структуру, стили, логику. Children prop позволяет автоматически передавать контент, находящийся между открывающим и закрывающим тегами компонента.
 
-### `npm run eject`
+**Почему в React предпочтительна композиция, а не наследование?**  
+* Большая гибкость
+* Низкая связанность компонентов
+* Ясная структура кода
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Зачем нужен useEffect для работы с localStorage? Что такое «побочный эффект» (side effect)?**
+useEffect необходим для выполнения побочных эффектов в функциональных компонентах.  Позволяет синхронизировать компонент с внешними системами (API, dom, bom) после рендеринга, не блокируя отрисовку интерфейса. 
+Побочный эффект - любое действие компонента, затрагивающее область вне его текущей функции рендеринга.
+Побочные эффекты выполняются с помощью useEffect, useLayoutEffect 
+В данной работе используем useEffect для загрузки данных из localstorage.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Почему нельзя выполнять побочный эффект непосредственно в теле функционального компонента?**  
+Так как это нарушает предсказуемость рендеринга и производительность.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Нужно ли добавлять все реактивные значения внутрь []?**
+Нет только те что в setup функции  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Что такое синтетические события (SyntheticEvent). Преимущества?**  
+Кроссбраузерная "обертка" над нативным событием браузера.  
+* Кроссбраузерность
+* Производительность(делегирование)
+* Совместимость с нативными событиями
+* Очистка(автоматическое удаление синтетического события после выполнения обработчика для повышения производительности)
 
-## Learn More
+**Жизненный цикл компонента**  
+* Монтирование (Добавление в DOM)
+* Обновление (Изменения props, state)
+* Размонтирование (Удаление из DOM)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

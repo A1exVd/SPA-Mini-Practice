@@ -1,3 +1,31 @@
+:root {
+  --primary-color: rgb(27, 85, 153);
+  --secondary-color: rgb(171, 0, 0);
+  --bg-color: rgb(240, 246, 248);
+  --section-color: white;
+  /* --product-card:  #f8fafc; */
+  --product-card: rgb(240, 246, 248);
+  --product-card-border: #e2e8f0;
+  /* --header-height: 3rem; */
+  --text-color: initial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] {
+  /* --primary-color: rgb(18, 50, 87); */
+  --secondary-color: rgb(68, 4, 4);
+  --bg-color: #1c1d22;
+  --section-color: rgb(28, 36, 44);
+  --product-card: #1c1d22;
+  --product-card-border: #282e35;
+  --text-color: #c4c4c4
+;
+
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +33,211 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  max-width: 1300px;
+  margin: auto; 
+}
+
+main > section {
+  margin-bottom: .5rem;
+}
+
+.header {
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  padding: .5rem 1rem;
+  color: white;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h2 {
+  color: var(--primary-color);
+}
+
+input, select {
+  background-color: var(--bg-color);
+  padding: .5em 1em;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+section {
+  background-color: var(--section-color);
+  padding: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Progress bar  */
+
+.progress-label {
+  display: block;
+}
+
+.progress {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 0.5rem;  
+}
+
+.progress::-webkit-progress-bar {
+  background-color: var(--text-color);
+  border-radius: .25rem;
+}
+
+.progress::-webkit-progress-value {
+  background-color: var(--primary-color);
+  border-radius: .25rem;
+}
+
+/* =========================================================== */
+
+
+/* Add Product */
+
+
+.product-form > * {
+  margin-bottom: .5em;
+  margin-right: 1em;
+  font-size: 1em;
+  width: 100%;
+  padding: .5em .5em;
+}
+
+input::placeholder {
+  font-size: 1rem;
+}
+
+/* Filter form */
+
+.filter-form label {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: .5em;
+  padding: .5em 1em; 
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border-radius: .25rem;
+}
+
+.filter-form label:hover {
+  cursor: pointer;
+}
+.filter-form input {
+  display: none;
+}
+
+.filter-form .selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* ============================================================= */
+
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 0;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--product-card);
+  border: 1px solid var(--product-card-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  overflow-wrap: break-word;
+}
+
+.product-card h3 {
+  margin-bottom: auto;
+}
+
+.product-category {
+  padding: 0.2em .5em;
+  border-radius: 2em;
+  color: white;
+}
+
+.keyboards {
+  background-color: rgb(0, 185, 255);
+}
+
+.mice {
+  background-color: rgb(27, 85, 153);
+}
+
+.laptops {
+  background-color: rgb(145, 161, 178);
+}
+
+.monitors {
+  background-color: rgb(55, 155, 113);
+}
+
+.headphones {
+  background-color: rgb(227, 115, 9);
+}
+
+.error {
+  color: rgb(247, 0, 0);
+}
+
+.theme-btn {
+  background-color: inherit;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  margin-left: auto;
+  padding: .25rem;
+}
+
+.theme-btn:hover {
+  background-color: rgb(28, 36, 44)
+}
+
+.primary-btn {
+  color: white; 
+  background-color: var(--primary-color);
+}
+
+.secondary-btn {
+  color: white; 
+  background-color: var(--secondary-color);
+}
+
+footer {
+  text-align: center;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  color: white;
+}
+
